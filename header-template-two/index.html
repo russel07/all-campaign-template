@@ -1,0 +1,77 @@
+<body id="i26i"><div class="bg-white shadow-md z-50 h-[150px]" id="imlv"><div class="container mx-auto px-4 py-3 flex items-center justify-between"><div class="flex-1"><!-- Droppable content area --></div><div class="cross-button ml-4">×</div></div><div id="ihvi">Winter Sale Ending .....</div><div id="iq0wi" class="countdown-component"><div data-type="days" class="countdown-block"><div><span class="countdown-number">00</span></div><div id="isfwd"><span class="countdown-label">Label</span></div></div><div data-type="hours" class="countdown-block"><div><span class="countdown-number">00</span></div><div><span class="countdown-label">Label</span></div></div><div data-type="minutes" class="countdown-block"><div><span class="countdown-number">00</span></div><div><span class="countdown-label">Label</span></div></div><div data-type="seconds" class="countdown-block"><div><span class="countdown-number">00</span></div><div><span class="countdown-label">Label</span></div></div></div><button id="iwcr1" class="button copy-button">Copy Text</button><img id="ii7oc" src="http://rhacademy.test/wp-content/uploads/sa-campaign/sa_campaign_67a0600b021ed7.63072582.jpg"/></div><script>var items = document.querySelectorAll('#iq0wi');
+          for (var i = 0, len = items.length; i < len; i++) {
+            (function(){
+var countdownElement = this;
+          var daysElement = countdownElement.querySelector('[data-type="days"] .countdown-number');
+          var hoursElement = countdownElement.querySelector('[data-type="hours"] .countdown-number');
+          var minutesElement = countdownElement.querySelector('[data-type="minutes"] .countdown-number');
+          var secondsElement = countdownElement.querySelector('[data-type="seconds"] .countdown-number');
+          var countdownTime = 86400; // Example: 1 day in seconds
+
+          var _updateCountdown = function updateCountdown() {
+            var days = Math.floor(countdownTime / (24 * 60 * 60));
+            var hours = Math.floor(countdownTime % (24 * 60 * 60) / (60 * 60));
+            var minutes = Math.floor(countdownTime % (60 * 60) / 60);
+            var seconds = Math.floor(countdownTime % 60);
+            if (daysElement) {
+              daysElement.innerHTML = days;
+            }
+            if (hoursElement) {
+              hoursElement.innerHTML = hours;
+            }
+            if (minutesElement) {
+              minutesElement.innerHTML = minutes;
+            }
+            if (secondsElement) {
+              secondsElement.innerHTML = seconds;
+            }
+            if (countdownTime > 0) {
+              countdownTime--;
+              setTimeout(_updateCountdown, 1000);
+            }
+          };
+          _updateCountdown();
+}.bind(items[i]))();
+          }
+          var items = document.querySelectorAll('#iwcr1');
+          for (var i = 0, len = items.length; i < len; i++) {
+            (function(){
+var button = this;
+          var copyText = this.getAttribute('copyText') || '';
+          var buttonText = this.getAttribute('buttonText') || 'Copy';
+          button.innerText = buttonText;
+          button.addEventListener('click', function () {
+            if (navigator.clipboard) {
+              // Primary method using the Clipboard API
+              try {
+                navigator.clipboard.writeText(copyText);
+                console.log('Text copied to clipboard:', copyText);
+              } catch (err) {
+                console.error('Failed to copy text using Clipboard API:', err);
+              } finally {
+                console.log('Copy button clicked:', button);
+                button.innerText = 'Copied!';
+              }
+            } else {
+              // Fallback method using a temporary <textarea>
+              try {
+                var textarea = document.createElement('textarea');
+                textarea.value = copyText;
+                textarea.style.position = 'fixed'; // Prevent scrolling to the bottom
+                textarea.style.opacity = '0'; // Make invisible
+                document.body.appendChild(textarea);
+                textarea.focus();
+                textarea.select();
+                document.execCommand('copy'); // Deprecated but still widely supported
+                document.body.removeChild(textarea);
+                console.log('Text copied to clipboard using fallback:', copyText);
+              } catch (err) {
+                console.error('Failed to copy text using fallback method:', err);
+              } finally {
+                console.log('Copy button clicked:', button);
+                button.innerText = 'Copied!';
+              }
+            }
+          });
+}.bind(items[i]))();
+          }</script>
