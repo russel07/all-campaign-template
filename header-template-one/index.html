@@ -1,18 +1,18 @@
-<div class="sa-ribbon-template"><div class="sa-ribbon-close-btn sa-campaign-ribbon-close" id="i23h"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" id="i1tg"><mask id="mask0_2255_1643" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32"><rect width="32" height="32" fill="#D9D9D9"></rect></mask><g mask="url(#mask0_2255_1643)"><path d="M9.6 24L8 22.4L14.4 16L8 9.6L9.6 8L16 14.4L22.4 8L24 9.6L17.6 16L24 22.4L22.4 24L16 17.6L9.6 24Z" fill="currentColor"></path></g></svg></div><div class="sa-ribbon-template-content" id="iwyoa"><div id="i9cqu"><span id="inglk">Get UP TO </span><span id="idsb7"><ins id="i8rqw">90%</ins></span><span id="iakpg"> OFF</span><br id="idbhk"/><span id="icyjd">+ </span><span id="innbh">FREE </span><span id="i45f3">Certificate!</span></div><div id="imau5"><span id="id9eh"><span id="i1dd9"><span id="ivo18">✅ END OF WINTER </span></span></span><span id="icshf"><span id="ilj67"><span id="ig8xc">FLASH SALE</span></span><span id="i3rmn"><span id="i9428"> 🔥</span></span></span></div><div id="iy70h"><span id="ihzcu">Use Coupon Code</span><span id="irtp9">👇 </span></div><div id="i250w" endDate="2025-03-31T15:00" class="countdown-component"><div data-prevent-move="true" data-type="days" class="countdown-block"><div id="i19fd"><span class="countdown-number">00</span></div><div id="i6eop">Days</div></div><div data-prevent-move="true" data-type="hours" class="countdown-block"><div><span class="countdown-number">00</span></div><div id="ix55i">Hours</div></div><div data-prevent-move="true" data-type="minutes" class="countdown-block"><div><span class="countdown-number">00</span></div><div id="ig20v">Minutes</div></div><div data-prevent-move="true" data-type="seconds" class="countdown-block"><div><span class="countdown-number">00</span></div><div id="i4quc">Seconds</div></div></div><button id="is1c4" buttonText="TREAT" copyText="TREAT" class="button copy-button">Copy Text</button><!-- Content will be droppable here --></div></div><script>var items = document.querySelectorAll('#i250w');
+<div id="izx1" class="sa-ribbon-template"><div id="i23h" class="sa-ribbon-close-btn sa-campaign-ribbon-close"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" id="i1tg"><mask id="mask0_2255_1643" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32"><rect width="32" height="32" fill="#D9D9D9"></rect></mask><g mask="url(#mask0_2255_1643)"><path d="M9.6 24L8 22.4L14.4 16L8 9.6L9.6 8L16 14.4L22.4 8L24 9.6L17.6 16L24 22.4L22.4 24L16 17.6L9.6 24Z" fill="currentColor"></path></g></svg></div><div id="iwyoa" class="sa-ribbon-template-content"><img id="irsgl" src="http://yocard.test////////wp-content/plugins/sa-campaign/selected-template/7/img/sa_campaign_67dce9cc13a467.00996594.webp"/><span id="i4jx4">Use Coupon Code</span><span id="iru17">⚡ Get any course for £11.99 Only!⚡</span><div id="i6pjy" endDate="2025-05-15T10:37" class="countdown-component-two"><div id="i40pg"><span data-type="days" class="days">00</span><span id="ior2f">Days</span></div><div id="i68tc"><span data-type="hours" class="hours">00</span><span id="i50nl">Hours</span></div><div><span data-type="minutes" class="minutes">00</span><span id="ivtb6">Minutes</span></div><div id="i5nqt"><span data-type="seconds" class="seconds">00</span><span id="i7yuq">Seconds</span></div></div><button id="ia85j" buttonText="Winter" copyText="Winter" class="button copy-button">Copy Text</button><!-- Content will be droppable here --></div></div><script>var items = document.querySelectorAll('#i6pjy');
           for (var i = 0, len = items.length; i < len; i++) {
             (function(){
-var countdownElement = this;
+var component = this;
           var interval;
           function startCountdown() {
-            var countdownTime = countdownElement.getAttribute('endDate');
-            if (!countdownTime) return;
-            var daysElement = countdownElement.querySelector('[data-type="days"] .countdown-number');
-            var hoursElement = countdownElement.querySelector('[data-type="hours"] .countdown-number');
-            var minutesElement = countdownElement.querySelector('[data-type="minutes"] .countdown-number');
-            var secondsElement = countdownElement.querySelector('[data-type="seconds"] .countdown-number');
-            var updateCountdown = function updateCountdown() {
+            var endDate = component.getAttribute('endDate');
+            if (!endDate) return;
+            var daysElement = component.querySelector('.days');
+            var hoursElement = component.querySelector('.hours');
+            var minutesElement = component.querySelector('.minutes');
+            var secondsElement = component.querySelector('.seconds');
+            function updateCountdown() {
               var now = new Date().getTime();
-              var distance = new Date(countdownTime).getTime() - now;
+              var distance = new Date(endDate).getTime() - now;
               if (distance < 0) {
                 clearInterval(interval);
                 daysElement.innerHTML = '00';
@@ -25,24 +25,12 @@ var countdownElement = this;
               var hours = Math.floor(distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
               var minutes = Math.floor(distance % (1000 * 60 * 60) / (1000 * 60));
               var seconds = Math.floor(distance % (1000 * 60) / 1000);
-              if (daysElement) {
-                daysElement.innerHTML = String(days).padStart(2, '0');
-              }
-              if (hoursElement) {
-                hoursElement.innerHTML = String(hours).padStart(2, '0');
-              }
-              if (minutesElement) {
-                minutesElement.innerHTML = String(minutes).padStart(2, '0');
-                ;
-              }
-              if (secondsElement) {
-                secondsElement.innerHTML = String(seconds).padStart(2, '0');
-                ;
-              }
-            };
-            if (interval) {
-              clearInterval(interval);
+              daysElement.innerHTML = String(days).padStart(2, '0');
+              hoursElement.innerHTML = String(hours).padStart(2, '0');
+              minutesElement.innerHTML = String(minutes).padStart(2, '0');
+              secondsElement.innerHTML = String(seconds).padStart(2, '0');
             }
+            if (interval) clearInterval(interval);
             updateCountdown();
             interval = setInterval(updateCountdown, 1000);
           }
@@ -52,13 +40,13 @@ var countdownElement = this;
           var observer = new MutationObserver(function () {
             startCountdown();
           });
-          observer.observe(countdownElement, {
+          observer.observe(component, {
             attributes: true,
-            attributeFilter: ['endDate']
+            attributeFilter: ['enddate']
           });
 }.bind(items[i]))();
           }
-          var items = document.querySelectorAll('#is1c4');
+          var items = document.querySelectorAll('#ia85j');
           for (var i = 0, len = items.length; i < len; i++) {
             (function(){
 var button = this;
