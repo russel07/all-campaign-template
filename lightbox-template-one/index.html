@@ -1,17 +1,89 @@
-<div id="campaign-popup" data-popup="true" class="campaign-popup"><div class="ligth-box-area"><div id="ipsb"><button type="button" id="ifc7" class="light-button">×</button></div><div class="content-area"><h2 class="text-2xl font-bold mb-4">Subscribe Now</h2><p class="text-gray-600 mb-4">Join our newsletter and get updates about our latest offers.</p></div></div></div><script>var items = document.querySelectorAll('#ifc7');
+<div id="campaign-popup" data-popup="true" class="campaign-popup"><div id="i0rg" class="ligth-box-area"><div id="ipsb"><div type="button" id="ifc7" class="light-button">×</div></div><div id="i33l" class="content-area"><div id="ifrhb">FLASH SALE</div><div id="iidvn">50% OFF</div><div id="id75k">YOUR ENTIRE ORDER</div><img id="ix0h" src="http://yocard.test//wp-content/plugins/sa-campaign/selected-template/13/img\sa_campaign_68060d2cbc7310.20571924.webp"/><div id="i0wel">LIMITED TIME OFFER</div><div id="ij13s" endDate="2025-04-30T15:34" class="countdown-component-two"><div><span data-type="days" class="days">00</span><span id="ippmi">DAYS</span></div><div><span data-type="hours" class="hours">00</span><span id="i1wix">HOURS</span></div><div><span data-type="minutes" class="minutes">00</span><span id="i0fw6">MINUTES</span></div><div><span data-type="seconds" class="seconds">00</span><span id="iis51">SECONDS</span></div></div><div id="ih5vc"><span id="iyc6d">Use Coupon Code</span><span id="inbcj">👇</span></div><button id="iz1eb" copyText="TREAT99" buttonText="TREAT" class="button copy-button">Copy Text</button></div></div></div><script>var items = document.querySelectorAll('#ij13s');
+          for (var i = 0, len = items.length; i < len; i++) {
+            (function(){
+var component = this;
+          var interval;
+          function startCountdown() {
+            var endDate = component.getAttribute('endDate');
+            if (!endDate) return;
+            var daysElement = component.querySelector('.days');
+            var hoursElement = component.querySelector('.hours');
+            var minutesElement = component.querySelector('.minutes');
+            var secondsElement = component.querySelector('.seconds');
+            function updateCountdown() {
+              var now = new Date().getTime();
+              var distance = new Date(endDate).getTime() - now;
+              if (distance < 0) {
+                clearInterval(interval);
+                daysElement.innerHTML = '00';
+                hoursElement.innerHTML = '00';
+                minutesElement.innerHTML = '00';
+                secondsElement.innerHTML = '00';
+                return;
+              }
+              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              var hours = Math.floor(distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+              var minutes = Math.floor(distance % (1000 * 60 * 60) / (1000 * 60));
+              var seconds = Math.floor(distance % (1000 * 60) / 1000);
+              daysElement.innerHTML = String(days).padStart(2, '0');
+              hoursElement.innerHTML = String(hours).padStart(2, '0');
+              minutesElement.innerHTML = String(minutes).padStart(2, '0');
+              secondsElement.innerHTML = String(seconds).padStart(2, '0');
+            }
+            if (interval) clearInterval(interval);
+            updateCountdown();
+            interval = setInterval(updateCountdown, 1000);
+          }
+          startCountdown();
+
+          // Watch for attribute changes
+          var observer = new MutationObserver(function () {
+            startCountdown();
+          });
+          observer.observe(component, {
+            attributes: true,
+            attributeFilter: ['enddate']
+          });
+}.bind(items[i]))();
+          }
+          var items = document.querySelectorAll('#iz1eb');
           for (var i = 0, len = items.length; i < len; i++) {
             (function(){
 var button = this;
-          var targetId = this.getAttribute('targetId') || 'sa-campaign-lightbox';
-          button.innerText = '×';
+          var copyText = this.getAttribute('copyText') || '';
+          var buttonText = this.getAttribute('buttonText') || 'Copy';
+          button.innerText = buttonText;
           button.addEventListener('click', function () {
-            var targetElement = document.getElementsByClassName("sa-campaign-lightbox");
-            if (targetElement.length > 0) {
-              Array.from(targetElement).forEach(function (element) {
-                element.style.display = 'none';
-              });
+            if (navigator.clipboard) {
+              // Primary method using the Clipboard API
+              try {
+                navigator.clipboard.writeText(copyText);
+                console.log('Text copied to clipboard:', copyText);
+              } catch (err) {
+                console.error('Failed to copy text using Clipboard API:', err);
+              } finally {
+                console.log('Copy button clicked:', button);
+                button.innerText = 'Copied!';
+              }
             } else {
-              console.error('Element with ID', targetId, 'not found');
+              // Fallback method using a temporary <textarea>
+              try {
+                var textarea = document.createElement('textarea');
+                textarea.value = copyText;
+                textarea.style.position = 'fixed'; // Prevent scrolling to the bottom
+                textarea.style.opacity = '0'; // Make invisible
+                document.body.appendChild(textarea);
+                textarea.focus();
+                textarea.select();
+                document.execCommand('copy'); // Deprecated but still widely supported
+                document.body.removeChild(textarea);
+                console.log('Text copied to clipboard using fallback:', copyText);
+              } catch (err) {
+                console.error('Failed to copy text using fallback method:', err);
+              } finally {
+                console.log('Copy button clicked:', button);
+                button.innerText = 'Copied!';
+              }
             }
           });
 }.bind(items[i]))();
