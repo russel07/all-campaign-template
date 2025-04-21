@@ -1,0 +1,48 @@
+<div id="campaign-popup" data-popup="true" class="campaign-popup"><div class="ligth-box-area" id="ip46"><div class="content-area" id="ilr2"><button type="button" class="light-button" id="iya5">×</button><img id="i71f2" src="http://xo-student.test/wp-content/plugins/sa-campaign/selected-template/32/img/sa_campaign_68061d37e54677.13866141.webp"/><div id="ivhth"><span id="itwla">GET FREE SHIPPING</span></div><div id="ilqgw">Save Even more this Black Friday with a <br/>Free shipping coupon</div><div id="isnkr" endDate="2025-04-21T20:46" class="countdown-component-two"><div id="iq91l"><span data-type="days" class="days">00</span><span id="i5pgz">Days</span></div><div id="ixh2x"><span data-type="hours" class="hours">00</span><span id="ipzdj">Hours</span></div><div id="ipusz"><span data-type="minutes" class="minutes">00</span><span id="ioyv8">Minutes</span></div><div id="iy3m2"><span data-type="seconds" class="seconds">00</span><span id="ian44">Seconds</span></div></div><a id="iqffk">Yes! I Want Free Shipping</a></div></div></div><script>var items = document.querySelectorAll('#isnkr');
+          for (var i = 0, len = items.length; i < len; i++) {
+            (function(){
+var component = this;
+          var interval;
+          function startCountdown() {
+            var endDate = component.getAttribute('endDate');
+            if (!endDate) return;
+            var daysElement = component.querySelector('.days');
+            var hoursElement = component.querySelector('.hours');
+            var minutesElement = component.querySelector('.minutes');
+            var secondsElement = component.querySelector('.seconds');
+            function updateCountdown() {
+              var now = new Date().getTime();
+              var distance = new Date(endDate).getTime() - now;
+              if (distance < 0) {
+                clearInterval(interval);
+                daysElement.innerHTML = '00';
+                hoursElement.innerHTML = '00';
+                minutesElement.innerHTML = '00';
+                secondsElement.innerHTML = '00';
+                return;
+              }
+              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              var hours = Math.floor(distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+              var minutes = Math.floor(distance % (1000 * 60 * 60) / (1000 * 60));
+              var seconds = Math.floor(distance % (1000 * 60) / 1000);
+              daysElement.innerHTML = String(days).padStart(2, '0');
+              hoursElement.innerHTML = String(hours).padStart(2, '0');
+              minutesElement.innerHTML = String(minutes).padStart(2, '0');
+              secondsElement.innerHTML = String(seconds).padStart(2, '0');
+            }
+            if (interval) clearInterval(interval);
+            updateCountdown();
+            interval = setInterval(updateCountdown, 1000);
+          }
+          startCountdown();
+
+          // Watch for attribute changes
+          var observer = new MutationObserver(function () {
+            startCountdown();
+          });
+          observer.observe(component, {
+            attributes: true,
+            attributeFilter: ['enddate']
+          });
+}.bind(items[i]))();
+          }</script>
